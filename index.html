@@ -59,6 +59,497 @@
 					</ul>
 				</section>
 
+				<section>
+					<section id="why-a-grid">
+						<h2>Why A Grid?</h2>
+						<p class="fragment">Grids enforce proportion and constraint on your design</p>
+						<p class="fragment">They provide order and structure to your information.</p>
+						<p class="fragment">The best grid is specific to your content and your design, as it is an extension of both.</p>
+					</section>
+					<section id="print-grid">
+						<h2>Print Grids Are Easy</h2>
+						<ul>
+							<li class="fragment">Fixed display size</li>
+							<li class="fragment">Fixed content size</li>
+							<li class="fragment">One reading mode</li>
+							<li class="fragment">Limited additional user distraction</li>
+						</ul>
+					</section>
+					<section id="web-grid">
+						<h2>Web Grids Are Hard</h2>
+						<ul>
+							<li class="fragment">Many and varied display sizes</li>
+							<li class="fragment">Variable content lengths, sizes, and types</li>
+							<li class="fragment">Numerous reading modes</li>
+							<li class="fragment">Wide potential range of additional user distractions</li>
+						</ul>
+					</section>
+				</section>
+
+				<section id="not-the-same">
+					<h1>We Cannot Think About Web Grids And Print Grids The Same Way</h1>
+				</section>
+
+				<section>
+					<section id="wont-fly">
+						<h1>This Crap Doesn't Fly Anymore</h1>
+					</section>
+					<section id="honnecourt-grid" data-source="http://canarymason.github.io/managing-rwd-presentation/#/web-grids" data-cite="Mason Wendell">
+						<h2>Villard De Honnecourt, 13th Century</h2>
+						<img src="images/honnecourt.png" alt="Honnecourt Grid" class="left">
+						<img src="images/honnecourt-800.png" alt="Honnecourt Grid - 800 Years Ago" class="right">
+					</section>
+					<section id="honnecourt-today" data-source="http://canarymason.github.io/managing-rwd-presentation/#/web-grids" data-cite="Mason Wendell">
+						<h2>Villard De Honnecourt, Today</h2>
+						<img src="images/honnecourt-use.png" alt="Honnecourt Grid Today">
+					</section>
+					<section id="print-only">
+						<h1>One Grid For One Context Doesn't Exist On The Web</h1>
+					</section>
+				</section>
+
+				<section>
+					<section id="and-yet">
+						<h1>And Yet…</h1>
+					</section>
+					<section data-state="bootstrap" id="bootstrap-grid">
+						<h1>Twitter Bootstrap</h1>
+					</section>
+					<section data-state="foundation" id="foundation-grid">
+						<h1>Zurb Foundation</h1>
+					</section>
+					<section data-state="pure" id="pure-grid">
+						<h1>YUI Pure</h1>
+					</section>
+					<section data-state="all-the-grids" id="all-grids" data-source="http://canarymason.github.io/managing-rwd-presentation/#/web-grids" data-cite="Mason Wendell">
+						<h1>All The Grids Are All The Same!</h1>
+					</section>
+				</section>
+
+				<section>
+					<section id="the-problem">
+						<h1>The Problem?</h1>
+					</section>
+					<section id="systems" data-source="http://dictionary.reference.com/browse/system?s=t" data-cite="Dictionary.com">
+						<dl>
+							<dt>System</dt>
+							<dd>an assemblage or combination of things or parts forming a complex or unitary whole</dd>
+						</dl>
+					</section>
+					<section id="frameworks" data-source="http://en.wikipedia.org/wiki/Software_framework" data-cite="Wikipedia">
+						<dl>
+							<dt>Framework</dt>
+							<dd>an abstraction in which software providing generic functionality can be selectively changed by additional user-written code, thus providing application-specific software.</dd>
+						</dl>
+					</section>
+					<section id="systems-frameworks">
+						<h2>They're Systems, Not Frameworks</h2>
+						<p>We've been treating (and calling) these CSS Systems, Frameworks</p>
+						<p class="fragment">We've been using these pre-designed systems as crutches</p>
+						<p class="fragment">We've been doing it wrong</p>
+					</section>
+				</section>
+
+				<section data-state="cart-horse" id="cart-before-horse"></section>
+
+				<section>
+					<section id="preprocessors">
+						<h1>Step 1: Get Yourself a CSS Preprocessor</h1>
+					</section>
+					<section id="sass">
+						<img src="images/not-sass.gif" alt="Doesn't matter, Not Sass">
+					</section>
+					<section id="fix-box-model">
+						<h1>Step 2: Fix the Box Model</h1>
+					</section>
+					<section id="box-model" data-state="experiment">
+						<img src="images/boxmodel.png" alt="Box Model">
+					</section>
+					<section id="border-box">
+						<pre><code class="language-scss">// We can import all of Compass safely because it doesn't write any CSS.
+@import 'compass';
+
+// We switch our box model to Border Box.
+// From [Paul Irish](http://paulirish.com/2012/box-sizing-border-box-ftw/)
+*, *:before, *:after {
+  @include box-sizing('border-box');
+}</code></pre>
+					</section>
+					<section id="grid-framework">
+						<h1>Step 3: Get Yourself a Grid <em>Framework</em></h1>
+					</section>
+					<section data-state="the-grid" id="singularity">
+						<h1><a href="https://github.com/team-sass/singularity">Singularity</a></h1>
+					</section>
+				</section>
+
+				<section id="installing-singularity">
+					<pre><code class="language-scss">> gem install singularitygs</code></pre>
+
+					<pre class="fragment"><code class="language-scss">require 'singularitygs'</code></pre>
+
+					<pre class="fragment"><code class="language-scss">@import 'singularitygs';</code></pre>
+				</section>
+
+				<section>
+					<section id="setup">
+						<h1>Setting Up A Grid</h1>
+					</section>
+					<section id="grids">
+						<dl>
+							<dt>$grids</dt>
+							<dd>Grid definition. Can be single number for symmetric grids or multiple numbers in relation for asymmetric grids. For symmetric grids, each column is considered to have a width of 1.</dd>
+						</dl>
+					</section>
+					<section id="gutters">
+						<dl>
+							<dt>$gutters</dt>
+							<dd>Gutter definition. The width of a single gutter in relation to a column of width 1. Can also be expressed as a single value with unit for fixed-sized gutters.</dd>
+						</dl>
+					</section>
+					<section id="gutter-styles">
+						<dl>
+							<dt>$gutter-styles</dt>
+							<dd>Type of gutter. Default is full gutter width to the opposite side of a column than its float. Can also be split to have half gutter width on either side, or fixed for fixed-sized gutters.</dd>
+						</dl>
+					</section>
+				</section>
+
+				<section>
+					<section id="boring-grids">
+						<h1>Boring Grids</h1>
+					</section>
+					<section id="symmetric-grids-bootstrap">
+						<h2>Symmetric Grids - Twitter Bootstrap</h2>
+						<pre><code class="language-scss">$grids: 12;
+$gutters: 1/3;</code></pre>
+						<img src="images/symmetric-grid-bootstrap.png" alt="Twitter Bootstrap Grid" class="fragment medium">
+					</section>
+					<section id="symmetric-grids-foundation">
+						<h2>Symmetric Grids - Zurb Foundation</h2>
+						<pre><code class="language-scss">$grids: 12;
+$gutters: 0.9375em;
+$gutter-style: split;</code></pre>
+						<img src="images/symmetric-grid-foundation.png" alt="Zurb Foundation Grid" class="fragment medium">
+					</section>
+					<section id="symmetric-grids-pure">
+						<h2>Symmetric Grids - YUI Pure</h2>
+						<pre><code class="language-scss">$grids: 12;
+$gutters: 0;</code></pre>
+						<img src="images/symmetric-grid-pure.png" alt="YUI Pure Grid" class="fragment medium">
+					</section>
+				</section>
+
+				<section>
+					<section id="interesting-grids">
+						<h1>Interesting Grids</h1>
+					</section>
+					<section id="asymmetric-grids">
+						<h2>Asymmetric Grid - Custom</h2>
+						<pre><code class="language-scss">$grids: 1 4 1;
+$gutters: 1/6;
+$gutter-style: split</code></pre>
+						<img src="images/asymmetric-grid-custom.png" alt="Custom Asymmetric Grid" class="fragment medium">
+					</section>
+					<section id="asymmetric-grids-compound">
+						<h2>Asymmetric Grid - Compound</h2>
+						<pre><code class="language-scss">// Compound function comes from [Singularity Extras](https://github.com/Team-Sass/Singularity-extras)
+$grids: compound(3, 4);
+$gutters: 1;</code></pre>
+						<img src="images/asymmetric-grid-compound.png" alt="Compound Asymmetric Grid" class="fragment medium">
+					</section>
+					<section id="asymmetric-grids-ratio">
+						<h2>Asymmetric Grid - Ratio Based</h2>
+						<pre><code class="language-scss">// Ratio function comes from [Singularity Extras](https://github.com/Team-Sass/Singularity-extras)
+$grids: ratio(golden-ratio(), 4);
+$gutters: golden-ratio() * 1em;
+$gutter-styles: split;</code></pre>
+						<img src="images/asymmetric-grid-ratio.png" alt="Ratio Asymmetric Grid" class="fragment medium">
+					</section>
+					<section id="asymmetric-grids-spiral">
+						<h2>Asymmetric Grid - Spiral Based</h2>
+						<pre><code class="language-scss">// Ratio spiral function comes from [Singularity Extras](https://github.com/Team-Sass/Singularity-extras)
+$grids: ratio-spiral(5);
+$gutters: 1;</code></pre>
+						<img src="images/asymmetric-grid-spiral.png" alt="Ratio Spiral Asymmetric Grid" class="fragment medium">
+					</section>
+				</section>
+
+				<section>
+					<section id="spanning-the-grid">
+						<h1>Spanning The Grid</h1>
+					</section>
+					<section id="semantic-grid">
+						<h2>Semantic Grids</h2>
+						<p>Singularity is what is referred to as semantic grid system. This means that instead of grid classes being generated that you apply to your HTML, the grid is stored entirely within your CSS and applied directly to the element you want to use it on.</p>
+						<p class="fragment">Yes, I know classes don't have semantic value.</p>
+					</section>
+					<section id="grid-span">
+						<dl>
+							<dt>@include<br> grid-span( $span, $location<br>);</dt>
+							<dd>Mixin for "attaching" a selector to columns on the current grid. Two required arguments are <strong>$span</strong>, how many columns you'd like to span, and <strong>$location</strong>, what column you'd like to start from</dd>
+						</dl>
+					</section>
+					<section id="grid-span-html">
+						<h2>Spanning The Grid - HTML</h2>
+
+						<pre><code class="language-markup">&lt;body&gt;
+  &lt;div class="main"&gt;Main Section&lt;/div&gt;
+  &lt;div class="first"&gt;First Section&lt;/div&gt;
+  &lt;div class="second"&gt;Second Section&lt;/div&gt;
+&lt;/body&gt;</code></pre>
+					</section>
+					<section id="grid-span-scss">
+						<h2>Spanning The Grid - Sass</h2>
+
+						<pre><code class="language-scss">$grids: 1 4 1;
+$gutters: 1/6;
+
+.first {
+  @include grid-span(1, 1);
+}
+
+.main {
+  @include grid-span(1, 2);
+}
+
+.second {
+  @include grid-span(1, 3);
+}</code></pre>
+					</section>
+					<section id="grid-span-display">
+						<h2>Spanning The Grid - Display</h2>
+						<img src="images/grid-span.png" alt="Grid Span display">
+					</section>
+				</section>
+
+				<section>
+					<section id="separation-of-concerns">
+						<h1>Separation of Concerns</h1>
+					</section>
+					<section id="breakpoint-vs-singularity">
+						<h2>Singularity is a grid framework, it's core competency is grids.</h2>
+						<h2 class="fragment">On the other hand, <a href="https://github.com/team-sass/breakpoint">Breakpoint</a>, is a media query framework.</h2>
+						<h2 class="fragment">Singularity leverages Breakpoint to introduce responsiveness</h2>
+					</section>
+					<section id="installing-breakpoint">
+						<pre><code class="language-scss">> gem install breakpoint</code></pre>
+
+						<pre class="fragment"><code class="language-scss">require 'breakpoint'</code></pre>
+
+						<pre class="fragment"><code class="language-scss">@import 'breakpoint';</code></pre>
+					</section>
+					<section id="breakpoint-basics">
+						<h2>Breakpoint - The Basics</h2>
+						<p>With Breakpoint, your basic <code>min-width</code> media queries get reduced to a single value</p>
+						<pre><code class="language-scss">$breakpoint-to-ems: true;
+
+$nav-inline: 532px;
+
+nav {
+  background: #c0ffee;
+  @include breakpoint($nav-inline) {
+    background: #decaff;
+  }
+}</code></pre>
+					</section>
+					<section id="breakpoint-basics-output">
+						<pre><code class="language-scss">nav {
+  background: #c0ffee;
+}
+@media (min-width: 33.25em) {
+  nav {
+    background: #decaff;
+  }
+}
+</code></pre>
+					</section>
+					<section id="breakpoint-fallbacks">
+						<h2>Breakpoint - No Query Fallbacks</h2>
+						<p>Providing fallbacks for when media queries aren't available is easy too</p>
+						<pre><code class="language-scss">$breakpoint-no-query-fallbacks: true;
+$breakpoint-to-ems: true;
+
+$nav-inline: 532px, 'no-query' '.no-mq';
+
+nav {
+  background: #c0ffee
+  @include breakpoint($nav-inline) {
+    background: #decaff
+  }
+}</code></pre>
+					</section>
+					<section id="breakpoint-fallbacks-output">
+						<pre><code class="language-scss">nav {
+  background: #c0ffee;
+}
+@media (min-width: 33.25em) {
+  nav {
+    background: #decaff;
+  }
+}
+.no-mq nav {
+  background: #decaff;
+}</code></pre>
+					</section>
+				</section>
+
+
+				<section>
+					<section id="responsive-grids">
+						<h1>Responsive Grids</h1>
+					</section>
+					<section id="add-context">
+						<dl>
+							<dt>add-*( context at breakpoint<br>)</dt>
+							<dd><strong>$grids</strong>, <strong>$gutters</strong>, and <strong>$gutter-styles</strong> all have a corresponding add context function (<em>grid</em>, <em>gutter</em>, <em>gutter-style</em>). This allows Singularity to know what context you'd like to be in when you call <strong>grid-span</strong>. Breakpoint is a <strong>min-width</strong> value</dd>
+						</dl>
+					</section>
+					<section id="responsive-grid-context">
+						<h2>Responsive Grid Context - Sass</h2>
+
+						<pre class="left"><code class="language-scss small">$grids: 12;
+$gutters: 1/3;
+
+$grids: add-grid(1 4 1 at 700px);
+$gutters: add-gutter(1/6 at 700px)
+
+.first {
+  @include grid-span(3, 4);
+  @include breakpoint(700px) {
+    @include grid-span(1, 1);
+  }
+}</code></pre>
+					<pre class="right"><code class="language-scss small">.main {
+  @include grid-span(6, 7);
+  @include breakpoint(700px) {
+    @include grid-span(1, 2);
+  }
+}
+
+.second {
+  @include grid-span(3, 1);
+  @include breakpoint(700px) {
+    @include grid-span(1, 3);
+  }
+}</code></pre>
+					</section>
+					<section id="responsive-grids-display">
+						<h2>Responsive Grid Context - Display</h2>
+
+						<video src="videos/rwd-grid-context.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' autoplay loop></video>
+					</section>
+				</section>
+
+				<section>
+					<section id="nested-grids">
+						<h1>Nested Grids</h1>
+					</section>
+					<section id="layout">
+						<dl>
+							<dt>layout( <br>$grid, $gutter<br>)</dt>
+							<dd>The Layout mixin allows you to selectively override the global context. Each of the global context variables can be overridden individually, and if they aren't, the global one will be used.</dd>
+						</dl>
+					</section>
+					<section id="nested-grid-html">
+						<h2>Nested Grids - HTML</h2>
+
+						<pre><code class="language-markup">&lt;body&gt;
+  &lt;div class="main"&gt;
+    &lt;div class="one"&gt;One&lt;/div&gt;
+    &lt;div class="two"&gt;Two&lt;/div&gt;
+    &lt;div class="three"&gt;
+      &lt;div class="a"&gt;Three A&lt;/div&gt;
+      &lt;div class="b"&gt;Three B&lt;/div&gt;
+      &lt;div class="c"&gt;Three C&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="four"&gt;Four&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="first"&gt;First Section&lt;/div&gt;
+  &lt;div class="second"&gt;Second Section&lt;/div&gt;
+&lt;/body&gt;</code></pre>
+					</section>
+					<section id="nested-grid-outer-scss">
+						<h2>Nested Grids (Outer Grid) - Sass</h2>
+
+						<pre><code class="language-scss">$grids: 1 4 1;
+$gutters: 1/6;
+
+.first {
+  @include grid-span(1, 1);
+}
+
+.main {
+  @include grid-span(1, 2);
+}
+
+.second {
+  @include grid-span(1, 3);
+}
+</code></pre>
+					</section>
+					<section id="nested-grid-outer-display">
+						<h2>Nested Grid (Outer Grid) - Display</h2>
+						<img src="images/nest-outer.png" alt="Nested Grids, Outer Grid">
+					</section>
+					<section id="nested-grid-inner-1-scss">
+						<h2>Nested Grids (First Nesting) - Sass</h2>
+
+						<pre><code class="language-scss">@include layout(8, 1/12) {
+	.one {
+	  @include grid-span(1, 1);
+	}
+
+	.two {
+	  @include grid-span(1, 8);
+	}
+
+	.three {
+	  @include grid-span(6, 2);
+	}
+
+	.four {
+	  @include grid-span(2, 4);
+	  clear: both;
+	 }
+}</code></pre>
+					</section>
+					<section id="nested-grid-inner-1-display">
+						<h2>Nested Grid (First Nesting) - Display</h2>
+						<img src="images/nest-inner-1.png" alt="Nested Grids, First Nesting">
+					</section>
+					<section id="nested-grid-inner-2-scss">
+						<h2>Nested Grids (Second Nesting) - Sass</h2>
+
+						<pre><code class="language-scss">@include layout(6, 1/12) {
+	.a {
+	  @include grid-span(2, 3);
+	}
+
+	.b {
+	  @include grid-span(2, 5);
+	}
+
+	.c {
+	  @include grid-span(2, 1);
+	}
+}</code></pre>
+					</section>
+					<section id="nested-grid-inner-2-display">
+						<h2>Nested Grid (Second Nesting) - Display</h2>
+						<img src="images/nest-inner-2.png" alt="Nested Grids, Second Nesting">
+					</section>
+				</section>
+
+				<section>
+					<section id="putting-it-all-together">
+						<h1>Putting It All Together</h1>
+					</section>
+					<section id="wireframe">
+						<h1><a href="demo" target="_blank">Responsive Wireframe</a></h1>
+					</section>
+				</section>
+
 
 
 

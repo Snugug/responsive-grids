@@ -1,0 +1,10 @@
+{
+  "name": "responsive-grids",
+  "version": "0.0.0",
+  "dependencies": {
+    "twitter-bootstrap-sass": "~2.0.3",
+    "yaml": "~4.1.1",
+    "pure": "~0.2.1",
+    "skeleton": "latest"
+  }
+}

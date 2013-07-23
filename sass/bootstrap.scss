@@ -1,0 +1,15 @@
+@import "../components/twitter-bootstrap-sass/vendor/assets/stylesheets/bootstrap-responsive";
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container-fluid {
+  height: 100vh
+}
+
+[class^='span'] {
+  height: 100vh;
+  background-color: #673151;
+}

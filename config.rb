@@ -1,6 +1,8 @@
 # Require any additional compass plugins here.
 require 'snugug-styleguide'
 require 'singularity-extras'
+require 'zurb-foundation'
+
 
 # Set this to the root of your project when deployed:
 http_path = "/"

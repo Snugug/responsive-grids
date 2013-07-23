@@ -1,0 +1,20 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+[class^="pure"] {
+  height: 100vh;
+}
+
+[class^="pure-u"] {
+  $color: #f0f1f8;
+
+  &:nth-of-type(odd) {
+    background-color: $color;
+  }
+  &:nth-of-type(even) {
+    background-color: darken($color, 15%);
+  }
+
+}

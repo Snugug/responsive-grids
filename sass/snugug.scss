@@ -5,7 +5,7 @@ body {
   .wf-inactive & {
     font-family: "P22Underground-Thin";
   }
-  font-weight: 100;
+  font-weight: 300;
   font-size: 1.5em;
 }
 
@@ -31,14 +31,14 @@ h1, h2, h3, h4, h5, h6 {
   .wf-inactive & {
     font-family: "P22Underground-Light";
   }
-  font-weight: 300;
+  font-weight: 500;
 }
 
 blockquote {
   .wf-inactive & {
     font-family: "P22Underground-Light";
   }
-  font-weight: 300;
+  font-weight: 500;
   color: nth($tertiary, 5);
 
   font-size: 2em;
@@ -65,7 +65,7 @@ blockquote {
     .wf-inactive & {
       font-family: "P22Underground-Thin";
     }
-    font-weight: 100;
+    font-weight: 300;
   }
 }
 
@@ -132,19 +132,19 @@ ol.fragments {
 //   font-weight: bold !important;
 // }
 
-.zeldman {
-  b:after {
-    position: absolute;
-    content: '';
-    width: image-width('bbd.png') / 8;
-    height: image-height('bbd.png') / 8;
-    background-image: image-url('bbd.png');
-    background-size: 100%;
-    bottom: 1.4em;
-    right: 7em;
-    @include rotate(20deg);
-  }
-}
+// .zeldman {
+//   b:after {
+//     position: absolute;
+//     content: '';
+//     width: image-width('bbd.png') / 8;
+//     height: image-height('bbd.png') / 8;
+//     background-image: image-url('bbd.png');
+//     background-size: 100%;
+//     bottom: 1.4em;
+//     right: 7em;
+//     @include rotate(20deg);
+//   }
+// }
 
 .not-container {
   width: 60%;
@@ -245,3 +245,118 @@ strong.lowercase {
     }
   }
 }
+
+p ~ p {
+  margin-top: 1.25em;
+}
+
+li ~ li {
+  margin-top: .5em;
+}
+
+.left {
+  float: left;
+  width: 48%;
+}
+
+.right {
+  width: 48%;
+  float: right
+}
+
+%state-image-full {
+  background-position: center;
+  background-size: cover;
+}
+
+dl {
+  @extend %monospace;
+}
+
+@include layout(1 2, .10) {
+  dt {
+    text-align: right;
+    font-weight: 500;
+    color: nth($tertiary, 5);
+    text-transform: lowercase;
+
+    // margin-top: -.65em;
+
+    $size: 1 - (2 - 1) / 5;
+    $size: ms($size);
+    @include adjust-font-size-to($size);
+    line-height: 1em;
+
+    @include grid-span(1, 1);
+
+    clear: both;
+
+  }
+
+  dd {
+    text-align: left;
+
+    $size: 1 - (4 - 1) / 5;
+    $size: ms($size);
+    @include adjust-font-size-to($size);
+    @include grid-span(1, 2);
+    margin-bottom: 1em;
+  }
+}
+
+img.medium {
+  max-width: 80%;
+}
+
+.all-the-grids h1,
+.bootstrap h1,
+.foundation h1,
+.pure h1,
+.the-grid h1 {
+  text-shadow: 1px 1px 1px nth($black, 1), 1px -1px 1px nth($black, 1), -1px -1px 1px nth($black, 1), -1px 1px 1px nth($black, 1);
+  // background: nth($black, 1);
+}
+
+em {
+  display: inline-block;
+  @include skew(-25deg, 0);
+}
+
+.state-background {
+  .the-grid & {
+    @extend %state-image-full;
+    background-image: inline-image('the-grid.jpg');
+  }
+
+  .all-the-grids & {
+    @extend %state-image-full;
+    background-image: inline-image('all-the-grids.jpg');
+  }
+
+  .cart-horse & {
+    @extend %state-image-full;
+    background-image: inline-image('cart-horse.jpg');
+  }
+
+  .bootstrap & {
+    @extend %state-image-full;
+    background-image: inline-image('bootstrap.png');
+  }
+
+  .foundation & {
+    @extend %state-image-full;
+    background-image: inline-image('foundation.png');
+  }
+
+  .pure & {
+    @extend %state-image-full;
+    background-image: inline-image('pure.png');
+  }
+}
+
+
+code.small {
+  font-size: .75em;
+}
+
+@import "ish";

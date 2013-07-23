@@ -1,0 +1,8 @@
+{
+  "name": "yaml",
+  "version": "4.1.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/yamlcss/yaml.git"
+  }
+}

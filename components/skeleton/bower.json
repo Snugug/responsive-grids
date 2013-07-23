@@ -1,0 +1,9 @@
+{
+  "name": "skeleton",
+  "version": "0.0.0",
+  "commit": "7ab682091d1032035cfcb668e6bd4b465bfa4679",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dhgamache/Skeleton.git"
+  }
+}
