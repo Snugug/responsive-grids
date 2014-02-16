@@ -57,6 +57,7 @@
 						<li class="fragment">Snugug on <a href="http://twitter.com/snugug"> Twitter</a>, <a href="http://github.com/snugug">GitHub</a>, <a href="http://snugug.com">The Internet</a></li>
 						<li class="fragment">Co-Organizer of <a href="github.com/team-sass">Team Sass</a>, <a href="http://sassconf.com">SassConf</a></li>
 					</ul>
+					<audio data-autoplay src="http://snugug.github.io/audio/doorbell.mp3" preload="auto">
 				</section>
 
 				<section id="slides-available">
@@ -202,7 +203,7 @@
 				</section>
 
 				<section id="installing-singularity">
-					<pre><code class="language-scss">> gem install singularitygs</code></pre>
+					<pre><code class="language-scss">gem 'singularitygs', '~>1.2.0.rc.6'</code></pre>
 
 					<pre class="fragment"><code class="language-scss">require 'singularitygs'</code></pre>
 
@@ -215,20 +216,20 @@
 					</section>
 					<section id="grids">
 						<dl>
-							<dt>$grids</dt>
-							<dd>Grid definition. Can be single number for symmetric grids or multiple numbers in relation for asymmetric grids. For symmetric grids, each column is considered to have a width of 1.</dd>
+							<dt>Grids</dt>
+							<dd>A collection of columns. Can be single number for symmetric grids or multiple numbers in relation for asymmetric grids. For symmetric grids, each column is considered to have a width of 1.</dd>
 						</dl>
 					</section>
 					<section id="gutters">
 						<dl>
-							<dt>$gutters</dt>
-							<dd>Gutter definition. The width of a single gutter in relation to a column of width 1. Can also be expressed as a single value with unit for fixed-sized gutters.</dd>
+							<dt>Gutters</dt>
+							<dd>Spacing between each column in a grid. The width of a single gutter in relation to a column of width 1. Can also be expressed as a single value with unit for fixed-sized gutters.</dd>
 						</dl>
 					</section>
 					<section id="gutter-styles">
 						<dl>
-							<dt>$gutter-styles</dt>
-							<dd>Type of gutter. Default is full gutter width to the opposite side of a column than its float. Can also be split to have half gutter width on either side, or fixed for fixed-sized gutters.</dd>
+							<dt>Gutter Styles</dt>
+							<dd>Arrangement of gutters. Default is full gutter width to the opposite side of a column than its float. Can also be split to have half gutter width on either side, or fixed for fixed-width gutters.</dd>
 						</dl>
 					</section>
 				</section>
@@ -236,24 +237,25 @@
 				<section>
 					<section id="boring-grids">
 						<h1>Boring Grids</h1>
+						<h6 class="fragment">(They're Symmetric)</h6>
 					</section>
 					<section id="symmetric-grids-bootstrap">
-						<h2>Symmetric Grids - Twitter Bootstrap</h2>
-						<pre><code class="language-scss">$grids: 12;
-$gutters: 1/3;</code></pre>
+						<h2>Twitter Bootstrap's Grid</h2>
+						<pre><code class="language-scss">@include add-grid(12);
+@include add-gutter(1/3);</code></pre>
 						<img src="images/symmetric-grid-bootstrap.png" alt="Twitter Bootstrap Grid" class="fragment medium">
 					</section>
 					<section id="symmetric-grids-foundation">
-						<h2>Symmetric Grids - Zurb Foundation</h2>
-						<pre><code class="language-scss">$grids: 12;
-$gutters: 0.9375em;
-$gutter-style: split;</code></pre>
+						<h2>Zurb Foundation's Grid</h2>
+						<pre><code class="language-scss">@include add-grid(12);
+@include add-gutter(0.9375em);
+@include add-gutter-style(split);</code></pre>
 						<img src="images/symmetric-grid-foundation.png" alt="Zurb Foundation Grid" class="fragment medium">
 					</section>
 					<section id="symmetric-grids-pure">
-						<h2>Symmetric Grids - YUI Pure</h2>
-						<pre><code class="language-scss">$grids: 12;
-$gutters: 0;</code></pre>
+						<h2>YUI Pure's Grid</h2>
+						<pre><code class="language-scss">@include add-grid(12);
+@include add-gutter(0);</code></pre>
 						<img src="images/symmetric-grid-pure.png" alt="YUI Pure Grid" class="fragment medium">
 					</section>
 				</section>
@@ -261,37 +263,54 @@ $gutters: 0;</code></pre>
 				<section>
 					<section id="interesting-grids">
 						<h1>Interesting Grids</h1>
+						<h6 class="fragment">(They're Asymmetric)</h6>
 					</section>
 					<section id="asymmetric-grids">
-						<h2>Asymmetric Grid - Custom</h2>
-						<pre><code class="language-scss">$grids: 1 4 1;
-$gutters: 1/6;
-$gutter-style: split</code></pre>
+						<h2>Custom Grids</h2>
+						<pre><code class="language-scss">@include add-grid(1 4 1);
+@include add-gutter(1/6);
+@include add-gutter-style(split)</code></pre>
 						<img src="images/asymmetric-grid-custom.png" alt="Custom Asymmetric Grid" class="fragment medium">
 					</section>
 					<section id="asymmetric-grids-compound">
-						<h2>Asymmetric Grid - Compound</h2>
-						<pre><code class="language-scss">// Compound function comes from [Singularity Extras](https://github.com/Team-Sass/Singularity-extras)
-$grids: compound(3, 4);
-$gutters: 1;</code></pre>
+						<h2>Compound Grids</h2>
+						<pre><code class="language-scss">// Compound function from [Singularity Extras](https://github.com/Team-Sass/Singularity-extras)
+@include add-grid(compound(3, 4));
+@include add-gutter(1);</code></pre>
 						<img src="images/asymmetric-grid-compound.png" alt="Compound Asymmetric Grid" class="fragment medium">
 					</section>
 					<section id="asymmetric-grids-ratio">
-						<h2>Asymmetric Grid - Ratio Based</h2>
-						<pre><code class="language-scss">// Ratio function comes from [Singularity Extras](https://github.com/Team-Sass/Singularity-extras)
-$grids: ratio(golden-ratio(), 4);
-$gutters: golden-ratio() * 1em;
-$gutter-styles: split;</code></pre>
+						<h2>Ratio Based Grids</h2>
+						<pre><code class="language-scss">// Ratio function from [Singularity Extras](https://github.com/Team-Sass/Singularity-extras)
+@include add-grid(ratio(golden-ratio(), 4));
+@include add-gutter(golden-ratio() * 1em);
+@include add-gutter-style(split);</code></pre>
 						<img src="images/asymmetric-grid-ratio.png" alt="Ratio Asymmetric Grid" class="fragment medium">
 					</section>
+					<section id="twitter-golden-ratio-spiral">
+						<img src="http://snugug.github.io/images/twitter-golden-ratio.png" alt="Twitter design with golden ratio spiral">
+					</section>
 					<section id="asymmetric-grids-spiral">
-						<h2>Asymmetric Grid - Spiral Based</h2>
-						<pre><code class="language-scss">// Ratio spiral function comes from [Singularity Extras](https://github.com/Team-Sass/Singularity-extras)
-$grids: ratio-spiral(5);
-$gutters: 1;</code></pre>
+						<h2>Ratio Spiral Based Grids</h2>
+						<pre><code class="language-scss">// Ratio spiral function from [Singularity Extras](https://github.com/Team-Sass/Singularity-extras)
+@include add-grid(ratio-spiral(5));
+@include add-gutter(1);</code></pre>
 						<img src="images/asymmetric-grid-spiral.png" alt="Ratio Spiral Asymmetric Grid" class="fragment medium">
 					</section>
+					<section id="asymmetric-anticipation">
+						<video src="http://snugug.github.io/videos/anticipation.mp4" class="stretch" data-autoplay></video>
+					</section>
+					<section id="asymmetric-grids-mixed-fixed-fluid">
+						<h2>Mixed Fixed and Fluid Grids</h2>
+						<pre><code class="language-scss">// Calc output style from [Singularity Extras](https://github.com/Team-Sass/Singularity-extras)
+@include add-grid(320px 1 2);
+@include add-gutter(1em);
+@include sgs-change('output', 'calc');</code></pre>
+						<video class="fragment" src="http://snugug.github.io/videos/calc.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' data-autoplay loop></video>
+					</section>
 				</section>
+
+				<section data-state="minions" id="yay"></section>
 
 				<section>
 					<section id="spanning-the-grid">
@@ -304,7 +323,7 @@ $gutters: 1;</code></pre>
 					</section>
 					<section id="grid-span">
 						<dl>
-							<dt>@include<br> grid-span( $span, $location<br>);</dt>
+							<dt>grid-span</dt>
 							<dd>Mixin for "attaching" a selector to columns on the current grid. Two required arguments are <strong>$span</strong>, how many columns you'd like to span, and <strong>$location</strong>, what column you'd like to start from</dd>
 						</dl>
 					</section>
@@ -320,15 +339,15 @@ $gutters: 1;</code></pre>
 					<section id="grid-span-scss">
 						<h2>Spanning The Grid - Sass</h2>
 
-						<pre><code class="language-scss">$grids: 1 4 1;
-$gutters: 1/6;
-
-.first {
-  @include grid-span(1, 1);
-}
+						<pre><code class="language-scss">@include add-grid(1 4 1);
+@include add-gutter(1/6);
 
 .main {
   @include grid-span(1, 2);
+}
+
+.first {
+  @include grid-span(1, 1);
 }
 
 .second {
@@ -337,7 +356,85 @@ $gutters: 1/6;
 					</section>
 					<section id="grid-span-display">
 						<h2>Spanning The Grid - Display</h2>
-						<img src="images/grid-span.png" alt="Grid Span display">
+						<img src="http://snugug.github.io/images/grid-span.png" alt="Grid Span display">
+					</section>
+				</section>
+
+				<section>
+					<section id="nested-grids">
+						<h1>Nested Grids</h1>
+					</section>
+					<section id="snap-grids">
+						<p>When nesting grids, if we want gutters of symmetric and asymmetric grids to line up, we want to <strong>snap</strong> our asymmetric grids</p>
+						<pre class="fragment"><code class="language-scss">@include add-grid(snap(2 4 4 2, 1/3));</code></pre>
+						<img src="http://snugug.github.io/images/asymmetric-grid-snap.png" alt="Snap Grid" class="fragment">
+					</section>
+					<section id="layout">
+						<dl>
+							<dt>layout</dt>
+							<dd>The Layout mixin allows you to selectively override the set global contexts. Each of the global context variables can be overridden individually, and if they aren't, the global one will be used.</dd>
+						</dl>
+					</section>
+					<section id="nested-grid-html">
+						<h2>Nested Grids - HTML</h2>
+
+						<pre><code class="language-markup">&lt;body&gt;
+  &lt;div class="main"&gt;
+    &lt;div class="one"&gt;One&lt;/div&gt;
+    &lt;div class="two"&gt;Two&lt;/div&gt;
+    &lt;div class="three"&gt;
+      &lt;div class="a"&gt;Three A&lt;/div&gt;
+      &lt;div class="b"&gt;Three B&lt;/div&gt;
+      &lt;div class="c"&gt;Three C&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="four"&gt;Four&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="first"&gt;First Section&lt;/div&gt;
+  &lt;div class="second"&gt;Second Section&lt;/div&gt;
+&lt;/body&gt;</code></pre>
+					</section>
+					<section id="nested-grid-inner-1-scss">
+						<h2>Nested Grids (First Nesting) - Sass</h2>
+
+						<pre><code class="language-scss">@include layout(8, 1/3) {
+  .one {
+    @include grid-span(4, 5);
+  }
+  .two {
+    @include grid-span(2, 1);
+  }
+  .three {
+    @include grid-span(5, 3);
+    clear: both;
+  }
+  .four {
+    @include grid-span(2, 4);
+    clear: both;
+  }
+}</code></pre>
+					</section>
+					<section id="nested-grid-inner-1-display">
+						<h2>Nested Grid (First Nesting) - Display</h2>
+						<img src="http://snugug.github.io/images/grid-span--inner-1.png" alt="Nested Grids, First Nesting">
+					</section>
+					<section id="nested-grid-inner-2-scss">
+						<h2>Nested Grids (Second Nesting) - Sass</h2>
+
+						<pre><code class="language-scss">@include layout(snap(1 2 2, 1/3), 1/3) {
+  .a {
+    @include grid-span(1, 3);
+  }
+  .b {
+    @include grid-span(1, 1);
+  }
+  .c {
+    @include grid-span(1, 2);
+  }
+}</code></pre>
+					</section>
+					<section id="nested-grid-inner-2-display">
+						<h2>Nested Grid (Second Nesting) - Display</h2>
+						<img src="http://snugug.github.io/images/grid-span--inner-2.png" alt="Nested Grids, Second Nesting">
 					</section>
 				</section>
 
@@ -351,7 +448,7 @@ $gutters: 1/6;
 						<h2 class="fragment">Singularity leverages Breakpoint to introduce responsiveness</h2>
 					</section>
 					<section id="installing-breakpoint">
-						<pre><code class="language-scss">> gem install breakpoint</code></pre>
+						<pre><code class="language-scss">gem 'breakpoint', '~>2.4.0'</code></pre>
 
 						<pre class="fragment"><code class="language-scss">require 'breakpoint'</code></pre>
 
@@ -417,145 +514,68 @@ nav {
 					<section id="responsive-grids">
 						<h1>Responsive Grids</h1>
 					</section>
-					<section id="add-context">
-						<dl>
-							<dt>add-*( context at breakpoint<br>)</dt>
-							<dd><strong>$grids</strong>, <strong>$gutters</strong>, and <strong>$gutter-styles</strong> all have a corresponding add context function (<em>grid</em>, <em>gutter</em>, <em>gutter-style</em>). This allows Singularity to know what context you'd like to be in when you call <strong>grid-span</strong>. Breakpoint is a <strong>min-width</strong> value</dd>
-						</dl>
+					<section id="responsive-context">
+						<p>You can call each <strong>add-*</strong> mixin multiple times and specify a <code>min-width</code> breakpoint in which to change that item's global context</p>
 					</section>
-					<section id="responsive-grid-context">
+					<section id="responsive-context-setup">
 						<h2>Responsive Grid Context - Sass</h2>
 
-						<pre class="left"><code class="language-scss small">$grids: 12;
-$gutters: 1/3;
+						<pre><code class="language-scss">$bkpt-1: 600px;
+$bkpt-2: 1050px;
 
-$grids: add-grid(1 4 1 at 700px);
-$gutters: add-gutter(1/6 at 700px)
+@include add-grid(.25 8 .25);
+@include add-grid(1.618 2.61792 at $bkpt-1);
+@include add-grid(2 8 2 at $bkpt-2);
+@include add-gutter(.25);
+@include add-gutter(1/6 at $bkpt-1);
+@include add-gutter(1/3 at $bkpt-2);</code></pre>
+				</section>
+				<section id="responsive-context-main">
+					<pre><code class="language-scss">.main {
+  @include grid-span(3, 1);
 
-.first {
-  @include grid-span(3, 4);
-  @include breakpoint(700px) {
-    @include grid-span(1, 1);
-  }
-}</code></pre>
-					<pre class="right"><code class="language-scss small">.main {
-  @include grid-span(6, 7);
-  @include breakpoint(700px) {
+  @include breakpoint($bkpt-1) {
     @include grid-span(1, 2);
   }
-}
 
-.second {
-  @include grid-span(3, 1);
-  @include breakpoint(700px) {
+  @include breakpoint($bkpt-2) {
+    @include grid-span(1, 2);
+  }
+}</code></pre>
+				</section>
+				<section id="responsive-context-first">
+					<pre><code class="language-scss">.first {
+  @include grid-span(1, 2);
+  clear: both;
+
+  @include breakpoint($bkpt-1) {
+    @include grid-span(1, 1);
+  }
+
+  @include breakpoint($bkpt-2) {
     @include grid-span(1, 3);
+  }
+}</code></pre>
+				</section>
+				<section id="responsive-context-second">
+					<pre><code class="language-scss">.second {
+  @include grid-span(1, 2);
+  clear: both;
+
+  @include breakpoint($bkpt-1) {
+    @include grid-span(1, 1);
+    clear: left;
+  }
+
+  @include breakpoint($bkpt-2) {
+    @include grid-span(1, 1);
   }
 }</code></pre>
 					</section>
 					<section id="responsive-grids-display">
 						<h2>Responsive Grid Context - Display</h2>
 
-						<video src="videos/rwd-grid-context.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' data-autoplay loop class="stretch"></video>
-					</section>
-				</section>
-
-				<section>
-					<section id="nested-grids">
-						<h1>Nested Grids</h1>
-					</section>
-					<section id="layout">
-						<dl>
-							<dt>layout( <br>$grid, $gutter<br>)</dt>
-							<dd>The Layout mixin allows you to selectively override the global context. Each of the global context variables can be overridden individually, and if they aren't, the global one will be used.</dd>
-						</dl>
-					</section>
-					<section id="nested-grid-html">
-						<h2>Nested Grids - HTML</h2>
-
-						<pre><code class="language-markup">&lt;body&gt;
-  &lt;div class="main"&gt;
-    &lt;div class="one"&gt;One&lt;/div&gt;
-    &lt;div class="two"&gt;Two&lt;/div&gt;
-    &lt;div class="three"&gt;
-      &lt;div class="a"&gt;Three A&lt;/div&gt;
-      &lt;div class="b"&gt;Three B&lt;/div&gt;
-      &lt;div class="c"&gt;Three C&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="four"&gt;Four&lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class="first"&gt;First Section&lt;/div&gt;
-  &lt;div class="second"&gt;Second Section&lt;/div&gt;
-&lt;/body&gt;</code></pre>
-					</section>
-					<section id="nested-grid-outer-scss">
-						<h2>Nested Grids (Outer Grid) - Sass</h2>
-
-						<pre><code class="language-scss">$grids: 1 4 1;
-$gutters: 1/6;
-
-.first {
-  @include grid-span(1, 1);
-}
-
-.main {
-  @include grid-span(1, 2);
-}
-
-.second {
-  @include grid-span(1, 3);
-}
-</code></pre>
-					</section>
-					<section id="nested-grid-outer-display">
-						<h2>Nested Grid (Outer Grid) - Display</h2>
-						<img src="images/nest-outer.png" alt="Nested Grids, Outer Grid">
-					</section>
-					<section id="nested-grid-inner-1-scss">
-						<h2>Nested Grids (First Nesting) - Sass</h2>
-
-						<pre><code class="language-scss">@include layout(8, 1/12) {
-	.one {
-	  @include grid-span(1, 1);
-	}
-
-	.two {
-	  @include grid-span(1, 8);
-	}
-
-	.three {
-	  @include grid-span(6, 2);
-	}
-
-	.four {
-	  @include grid-span(2, 4);
-	  clear: both;
-	 }
-}</code></pre>
-					</section>
-					<section id="nested-grid-inner-1-display">
-						<h2>Nested Grid (First Nesting) - Display</h2>
-						<img src="images/nest-inner-1.png" alt="Nested Grids, First Nesting">
-					</section>
-					<section id="nested-grid-inner-2-scss">
-						<h2>Nested Grids (Second Nesting) - Sass</h2>
-
-						<pre><code class="language-scss">@include layout(6, 1/12) {
-	.a {
-	  @include grid-span(2, 3);
-	}
-
-	.b {
-	  @include grid-span(2, 5);
-	}
-
-	.c {
-	  @include grid-span(2, 1);
-	}
-}</code></pre>
-					</section>
-					<section id="nested-grid-inner-2-display">
-						<h2>Nested Grid (Second Nesting) - Display</h2>
-						<img src="images/nest-inner-2.png" alt="Nested Grids, Second Nesting">
+						<video src="http://snugug.github.io/videos/responsive-context.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' data-autoplay loop class="stretch"></video>
 					</section>
 				</section>
 
@@ -565,7 +585,7 @@ $gutters: 1/6;
 						<pre><code class="language-scss">// Intrinsic Ratio mixin from [Toolkit](https://github.com/team-sass/toolkit)</code></pre>
 					</section>
 					<section id="all-together-now">
-						<video src="videos/alltogether.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' data-autoplay class="stretch"></video>
+						<video src="http://snugug.github.io/videos/what-the-fox-say.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' data-autoplay class="stretch"></video>
 					</section>
 				</section>
 
@@ -611,17 +631,20 @@ $gutters: 1/6;
 
 				// Optional libraries used to extend on reveal.js
 				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
-					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+						{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } }
+					, { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } }
+					, { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } }
+					, { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } }
+					, { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					//, { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// , { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
 				]
 			});
 
 		</script>
+
+		<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':8088/livereload.js?snipver=1"></' + 'script>')
+    </script>
 
 		<!-- Google Analytics -->
 		<script>
