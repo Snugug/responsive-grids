@@ -53,11 +53,10 @@
 
 					<ul class="fragments small">
 						<li class="fragment">Sam Richard</li>
-						<li class="fragment">Sr. Front End Developer, NBCUniversal</li>
 						<li class="fragment">Snugug on <a href="http://twitter.com/snugug"> Twitter</a>, <a href="http://github.com/snugug">GitHub</a>, <a href="http://snugug.com">The Internet</a></li>
-						<li class="fragment">Co-Organizer of <a href="github.com/team-sass">Team Sass</a>, <a href="http://sassconf.com">SassConf</a></li>
+						<li class="fragment">Co-Organizer of <a href="github.com/at-import">@import</a>, <a href="http://sassconf.com">SassConf</a></li>
 					</ul>
-					<audio data-autoplay src="http://snugug.github.io/audio/doorbell.mp3" preload="auto">
+					<!-- <audio data-autoplay src="http://snugug.github.io/audio/doorbell.mp3" preload="auto"> -->
 				</section>
 
 				<section id="slides-available">
@@ -149,7 +148,7 @@
 					<section id="the-problem">
 						<h1>The Problem?</h1>
 					</section>
-					<section id="systems" data-source="http://dictionary.reference.com/browse/system?s=t" data-cite="Dictionary.com">
+<!-- 					<section id="systems" data-source="http://dictionary.reference.com/browse/system?s=t" data-cite="Dictionary.com">
 						<dl>
 							<dt>System</dt>
 							<dd>an assemblage or combination of things or parts forming a complex or unitary whole</dd>
@@ -160,12 +159,12 @@
 							<dt>Framework</dt>
 							<dd>an abstraction in which software providing generic functionality can be selectively changed by additional user-written code, thus providing application-specific software.</dd>
 						</dl>
-					</section>
+					</section> -->
 					<section id="systems-frameworks">
 						<h2>They're Systems, Not Frameworks</h2>
-						<p>We've been treating (and calling) these CSS Systems, Frameworks</p>
+<!-- 						<p>We've been treating (and calling) these CSS Systems, Frameworks</p>
 						<p class="fragment">We've been using these pre-designed systems as crutches</p>
-						<p class="fragment">We've been doing it wrong</p>
+						<p class="fragment">We've been doing it wrong</p> -->
 					</section>
 				</section>
 
@@ -185,13 +184,10 @@
 						<img src="images/boxmodel.png" alt="Box Model">
 					</section>
 					<section id="border-box">
-						<pre><code class="language-scss">// We can import all of Compass safely because it doesn't write any CSS.
-@import 'compass';
-
-// We switch our box model to Border Box.
+						<pre><code class="language-scss">// We switch our box model to Border Box.
 // From [Paul Irish](http://paulirish.com/2012/box-sizing-border-box-ftw/)
 *, *:before, *:after {
-  @include box-sizing('border-box');
+  box-sizing: border-box;
 }</code></pre>
 					</section>
 					<section id="grid-framework">
@@ -203,7 +199,7 @@
 				</section>
 
 				<section id="installing-singularity">
-					<pre><code class="language-scss">gem 'singularitygs', '~>1.2.0.rc.6'</code></pre>
+					<pre><code class="language-scss">gem 'singularitygs', '~>1.4.0'</code></pre>
 
 					<pre class="fragment"><code class="language-scss">require 'singularitygs'</code></pre>
 
@@ -223,13 +219,13 @@
 					<section id="gutters">
 						<dl>
 							<dt>Gutters</dt>
-							<dd>Spacing between each column in a grid. The width of a single gutter in relation to a column of width 1. Can also be expressed as a single value with unit for fixed-sized gutters.</dd>
+							<dd>Spacing between each column. Can either be fluid in relation to the width of the columns or fixed.</dd>
 						</dl>
 					</section>
 					<section id="gutter-styles">
 						<dl>
 							<dt>Gutter Styles</dt>
-							<dd>Arrangement of gutters. Default is full gutter width to the opposite side of a column than its float. Can also be split to have half gutter width on either side, or fixed for fixed-width gutters.</dd>
+							<dd>Arrangement of gutters. Default is full width of the gutter after a column, but can also have the gutter width split on each side of a column.</dd>
 						</dl>
 					</section>
 				</section>
@@ -448,7 +444,7 @@
 						<h2 class="fragment">Singularity leverages Breakpoint to introduce responsiveness</h2>
 					</section>
 					<section id="installing-breakpoint">
-						<pre><code class="language-scss">gem 'breakpoint', '~>2.4.0'</code></pre>
+						<pre><code class="language-scss">gem 'breakpoint', '~>2.5.0'</code></pre>
 
 						<pre class="fragment"><code class="language-scss">require 'breakpoint'</code></pre>
 
