@@ -568,6 +568,24 @@ $bkpt-2: 1050px;
   }
 }</code></pre>
 					</section>
+          <section id="responsive-layout-at">
+            <pre><code class="language-scss">// `layout-at` mixin can alternately be used for responsive grids
+
+$grid-1: (
+  'grid': 1.618 2.61792,
+  'gutter': 1/6
+);
+
+.second {
+  @include grid-span(1, 2);
+  clear: both;
+
+  @include layout-at($grid-1, 700px) {
+    @include grid-span(1, 1);
+    clear: left;
+  }
+}</code></pre>
+          </section>
 					<section id="responsive-grids-display">
 						<h2>Responsive Grid Context - Display</h2>
 
